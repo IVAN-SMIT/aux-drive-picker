@@ -9,7 +9,6 @@ aux-dp.py
 
 Запуск:
     python aux-dp.py
-
 """
 
 import sys
