@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+dist/
+build/
+
+# Виртуальное окружение
+venv/
+env/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Временные файлы
+*.log
+*.tmp
+
+# Видеофайлы (обычно большие)
+*.mp4
+*.avi
+*.mov
+
+# Выходные данные (опционально — можно закоммитить для демонстрации)
+outputs/*.csv
+outputs/*.json
+outputs/*.png
+outputs/*.svg
+
+# Файл с конфигурацией лаунчера
+pipeline_config.json
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db

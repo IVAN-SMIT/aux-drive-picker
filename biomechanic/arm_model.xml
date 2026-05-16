@@ -1,0 +1,61 @@
+<mujoco>
+  <option timestep="0.01" gravity="0 0 -9.81"/>
+  
+  <visual>
+    <headlight ambient="0.3 0.3 0.3" diffuse="0.8 0.8 0.8" specular="0.3 0.3 0.3"/>
+  </visual>
+  
+  <worldbody>
+    <light name="main" pos="2 2 2" directional="true"/>
+    <light name="fill" pos="-1 1 1" directional="true"/>
+    
+    <!-- Пол -->
+    <geom type="plane" size="3 3 0.1" rgba="0.1 0.15 0.2 1" pos="0 0 -0.6"/>
+    
+    <!-- Торс (база) -->
+    <body name="torso" pos="0 0 0.5">
+      <geom type="box" size="0.12 0.08 0.2" rgba="0.4 0.4 0.45 1"/>
+      
+      <!-- Плечо (звено 1) -->
+      <body name="upper_arm" pos="0 0.06 0.05">
+        <joint name="shoulder" type="hinge" axis="0 1 0" 
+               range="-90 90" damping="0.5" pos="0 0 0"/>
+        
+        <geom type="capsule" fromto="0 0 0 0 0 -0.35" 
+              size="0.05" rgba="0.9 0.2 0.2 1"/>
+        
+        <geom type="sphere" size="0.04" rgba="0.9 0.5 0.2 1" pos="0 0 -0.35"/>
+        
+        <!-- Предплечье (звено 2) -->
+        <body name="forearm" pos="0 0 -0.35">
+          <joint name="elbow" type="hinge" axis="0 1 0" 
+                 range="-130 0" damping="0.3" pos="0 0 0"/>
+          
+          <geom type="capsule" fromto="0 0 0 0 0 -0.28" 
+                size="0.04" rgba="0.2 0.5 0.9 1"/>
+          
+          <geom type="sphere" size="0.035" rgba="0.9 0.8 0.2 1" pos="0 0 -0.28"/>
+          
+          <!-- Груз в руке (опционально) -->
+          <body name="load" pos="0 0 -0.28">
+            <geom type="sphere" size="0.04" rgba="0.5 0.5 0.5 0.5" 
+                  mass="0.0"/>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+  
+  <actuator>
+    <motor name="shoulder_motor" joint="shoulder" gear="1.0" ctrlrange="-90 90"/>
+    <motor name="elbow_motor" joint="elbow" gear="1.0" ctrlrange="-90 90"/>
+  </actuator>
+  
+  <sensor>
+    <actuatorfrc name="shoulder_force" actuator="shoulder_motor"/>
+    <actuatorfrc name="elbow_force" actuator="elbow_motor"/>
+    <jointpos name="shoulder_pos" joint="shoulder"/>
+    <jointpos name="elbow_pos" joint="elbow"/>
+  </sensor>
+</mujoco>
+
