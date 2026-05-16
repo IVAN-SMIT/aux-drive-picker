@@ -61,7 +61,7 @@
 
 ```bash
 # 1. Клонировать репозиторий
-git clone <repo-url>
+git clone <https://github.com/IVAN-SMIT/aux-drive-picker>
 cd aux-drive-picker
 
 # 2. Установить зависимости
