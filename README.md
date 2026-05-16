@@ -135,7 +135,7 @@ python biomechanic/test_biomechanics.py
 ## Структура файлов
 
 ```
-проект_егор/
+aux-drive-picker/
 │
 ├── main_pipeline.py              # Сквозной пайплайн
 ├── aux-dp.py                     # Интерактивный лаунчер с меню
